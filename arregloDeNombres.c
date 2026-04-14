@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void mostrarPersonas(char *nombres[]);
+int main(){
+    char *nombresDeAlumnos[5]; 
+
+    char buff[120];
+
+    for(int i=0; i<5; i++){
+        printf("Ingrese nombre del alumno: ");
+        scanf("%s", buff);
+        int cantidadDeCaracteres = strlen(buff); //sirve para saber que cantidad de reserva debo pedir
+        nombresDeAlumnos[i]=(char*)malloc(sizeof(char)*(cantidadDeCaracteres + 1)); //le sumo 1 porque tiene en cuenta la barra final de frase
+        strcpy(nombresDeAlumnos[i], buff);
+
+    }
+    mostrarPersonas(nombresDeAlumnos);
+    return 0;
+}
+
+void mostrarPersonas(char *nombres[]){
+    printf("Los alumnos son: \n");
+    for(int i =0; i<5; i++){
+        printf("%s, \t ", nombres[i]);
+    }
+}
