@@ -5,8 +5,6 @@
 
 void mostrarPersonas(char *nombres[]);//recibe un arreglo de cadenas(nombres de los alumnos)
 void buscarNombrePorID(char *nombres[], int indice);
-
-void mostrarPersonas(char *nombres[]);
 void buscarNombrePorPalabra(char *nombres[], char palabra[]);
 
 int main(){
