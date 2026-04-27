@@ -23,7 +23,25 @@ int main(){
     }
     mostrarPersonas(nombresDeAlumnos);
     
-    printf("\nIngrese el numero posicion del nombre a buscado:  ");
+    int opcion;
+    printf("\n------BUSCAR NOMBRE------");
+    printf("\n Elija una opcion: ");
+    printf("\n 1-Buscar nombre por palabra: ");
+    printf("\n 2-Buscar nombre por ID: \n");
+    scanf("%d", &opcion);
+
+    if(opcion == 1){
+        char palabra[DIM];
+        printf("Ingrese la palabra a buscar: ");
+        scanf("%s", palabra);
+        buscarNombrePorPalabra(nombresDeAlumnos, palabra);
+    }else{
+        printf("\nIngrese el numero posicion del nombre a buscado:  ");
+        scanf("%d", &posicion);
+        buscarNombrePorID(nombresDeAlumnos,posicion);
+    }
+
+    /*printf("\nIngrese el numero posicion del nombre a buscado:  ");
     scanf("%d", &posicion);
     buscarNombrePorID(nombresDeAlumnos,posicion);
 
@@ -32,7 +50,7 @@ int main(){
 
     printf("Ingrese la palabra a buscar: ");
     scanf("%s", palabra);
-    buscarNombrePorPalabra(nombresDeAlumnos, palabra);
+    buscarNombrePorPalabra(nombresDeAlumnos, palabra);*/
 
     return 0;
 }
