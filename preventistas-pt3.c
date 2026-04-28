@@ -28,7 +28,7 @@ int main(){
     Cliente *pClientes;
     int cantClientes; //lo uso para saber la cantidad de memoria que debo reservar
 
-    printf("Ingrese la cantidad de clientes(1-5): ");
+    printf("Ingrese la cantidad de clientes: ");
     scanf("%d", &cantClientes);
     getchar(); 
 
@@ -58,33 +58,33 @@ int main(){
         puts(pClientes[i].NombreCliente);
         printf("Cantidad de Productos a pedir: %d\n", pClientes[i].CantidadProductosAPedir);
         //para Productos
-        Producto *pProductos;
-        pProductos = (Producto*)malloc(pClientes[i].CantidadProductosAPedir*sizeof(Producto));
+        
+        pClientes[i].Productos = (Producto*)malloc(pClientes[i].CantidadProductosAPedir*sizeof(Producto));
 
         printf("\n----------PRODUCTOS---------\n");
         for(int j=0; j<pClientes[i].CantidadProductosAPedir; j++){
 
-            pProductos[j].ProductoID=j+1;
+            pClientes[i].Productos[j].ProductoID=j+1;
 
-            pProductos[j].Cantidad = 1+rand()%10;
+            pClientes[i].Productos[j].Cantidad = 1+rand()%10;
 
             int k = rand()%5;
-            pProductos[j].TipoProducto=TiposProductos[k];
+            pClientes[i].Productos[j].TipoProducto=TiposProductos[k];
 
-            pProductos[j].PrecioUnitario= 1+rand()%100;
+            pClientes[i].Productos[j].PrecioUnitario= 1+rand()%100;
 
-            float costo = calcularCosto(pProductos[j]);
+            float costo = calcularCosto(pClientes[i].Productos[j]);
 
-            printf("\nDetalles del producto:\n");
-            printf("ID: %d\n", pProductos[j].ProductoID);
-            printf("Cantidad: %d\n", pProductos[j].Cantidad);
-            printf("Tipo: %s\n", pProductos[j].TipoProducto);
-            printf("Precio: %.2f\n", pProductos[j].PrecioUnitario);
+            printf("\n------Detalles del producto:-----------\n");
+            printf("ID: %d\n", pClientes[i].Productos[j].ProductoID);
+            printf("Cantidad: %d\n", pClientes[i].Productos[j].Cantidad);
+            printf("Tipo: %s\n", pClientes[i].Productos[j].TipoProducto);
+            printf("Precio: %.2f\n", pClientes[i].Productos[j].PrecioUnitario);
             printf("Costo Total : %.2f", costo);
 
         }
         free(buff);
-        free(pProductos);
+        free(pClientes[i].Productos);
         
     }
     free(pClientes);
